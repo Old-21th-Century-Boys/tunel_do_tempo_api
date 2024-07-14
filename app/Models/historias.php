@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class historiasParalelas extends Model
+class historias extends Model
 {
     use HasFactory;
 
-    protected $table = 'historias_paralelas';
+    protected $table = 'historias';
     protected $primaryKey = 'id';
 
     const ID = 'id';
@@ -18,9 +18,9 @@ class historiasParalelas extends Model
     const NOMES_MEMBROS = 'nomesMembros';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
+    const DELETED_AT = 'deleted_at';
 
     protected $fillable = [
-        self::ID,
         self::TITULO,
         self::PATH,
         self::NOMES_MEMBROS,
@@ -29,12 +29,8 @@ class historiasParalelas extends Model
     protected $hidden = [
         self::CREATED_AT,
         self::UPDATED_AT,
+        self::DELETED_AT,
     ];
-
-    public function getId()
-    {
-        return $this->getAttribute(self::ID);
-    }
 
     public function getTitulo()
     {
@@ -50,5 +46,6 @@ class historiasParalelas extends Model
     {
         return $this->getAttribute(self::NOMES_MEMBROS);
     }
-    
+
+
 }
