@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('fotos', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('path');
+            $table->timestamp('anoFoto')->nullable();
+            $table->timestamps(); // This automatically adds created_at and updated_at as timestamp fields
         });
     }
 
