@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historia_paralelas', function (Blueprint $table) {
+        Schema::create('historias_paralelas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
             $table->string('path');
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('historia_paralelas');
+        Schema::dropIfExists('historias_paralelas');
     }
 };
