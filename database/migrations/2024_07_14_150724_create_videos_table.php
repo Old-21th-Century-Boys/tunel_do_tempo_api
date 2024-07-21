@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('path');
-            $table->timestamp('anoVideo')->nullable();
+            $table->timestamp('anoVideo');
+            $table->string('IdMembros');
             $table->timestamps();
         });
     }

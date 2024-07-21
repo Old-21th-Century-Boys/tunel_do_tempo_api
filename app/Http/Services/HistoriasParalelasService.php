@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Services;
-use App\Http\Repositories\HistoriasRepository as RepositoriesHistoriasRepository;
+use App\Http\Repositories\HistoriasParalelasRepository as RepositoriesHistoriasParalelasRepository;
 use Carbon\Carbon;
 
-class HistoriasService
+class HistoriasParalelasService
 {
-    private $historiasRepository;
+    private $historiasParalelasRepository;
     
     public function __construct()
     {
-        $this->historiasRepository = new RepositoriesHistoriasRepository();
+        $this->historiasParalelasRepository = new RepositoriesHistoriasParalelasRepository();
     }
     
     public function store(array $data)
@@ -32,29 +32,30 @@ class HistoriasService
             'IdMembros' => $data['IdMembros'],
             'anoVideo' => Carbon::now()
         ];
-        
         $video = $videoService->store($dataVideo);
-
-        return $this->historiasRepository->store($data, $foto->Id, $video->Id);
+        
+        return $this->historiasParalelasRepository->store($data, $foto->Id, $video->Id);
     }
-    
+
     public function index()
     {
-        return $this->historiasRepository->index();
+        return $this->historiasParalelasRepository->index();
     }
 
     public function show(int $id)
     {
-        return $this->historiasRepository->show($id);
+        return $this->historiasParalelasRepository->show($id);
     }
 
     public function update(int $id, array $data)
     {
-        return $this->historiasRepository->update($id, $data);
+        return $this->historiasParalelasRepository->update($id, $data);
     }
 
     public function destroy(int $id)
     {
-        return $this->historiasRepository->destroy($id);
+        return $this->historiasParalelasRepository->destroy($id);
     }
+
+    
 }

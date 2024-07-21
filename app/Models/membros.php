@@ -16,6 +16,7 @@ class membros extends Model
     const NOME = 'nome';
     const ANIVERSARIO = 'aniversario';
     const EMAIL = 'email';
+    const FOTO_ID = 'fotoId';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -24,6 +25,7 @@ class membros extends Model
         self::NOME,
         self::ANIVERSARIO,
         self::EMAIL,
+        self::FOTO_ID,
     ];
 
     protected $hidden = [
@@ -49,6 +51,11 @@ class membros extends Model
     public function getEmail()
     {
         return $this->getAttribute(self::EMAIL);
+    }
+
+    public function getFotoId()
+    {
+        return $this->getAttribute(self::FOTO_ID);
     }
 
 }

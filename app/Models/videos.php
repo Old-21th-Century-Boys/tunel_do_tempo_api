@@ -16,6 +16,7 @@ class videos extends Model
     const TITULO = 'titulo';
     const PATH = 'path';
     const ANO_VIDEO = 'anoVideo';
+    const ID_MEMBROS = 'idMembros';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -23,6 +24,7 @@ class videos extends Model
         self::TITULO,
         self::PATH,
         self::ANO_VIDEO,
+        self::ID_MEMBROS
     ];
 
     protected $hidden = [
@@ -50,4 +52,8 @@ class videos extends Model
         return $this->getAttribute(self::ANO_VIDEO);
     }
 
+    public function getIdMembros()
+    {
+        return $this->getAttribute(self::ID_MEMBROS);
+    }
 }

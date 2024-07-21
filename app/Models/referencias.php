@@ -15,18 +15,18 @@ class referencias extends Model
     const ID = 'id';
     const TITULO = 'titulo';
     const PATH = 'path';
-    const NOMES_MEMBROS = 'nomesMembros';
-    const VIDEO_PATH = 'videoPath';
-    const FOTO_PATH = 'fotoPath';
+    const ID_MEMBROS = 'IdMembros';
+    const VIDEO_ID = 'videoId';
+    const FOTO_ID = 'fotoId';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
     protected $fillable = [
         self::TITULO,
         self::PATH,
-        self::NOMES_MEMBROS,
-        self::VIDEO_PATH,
-        self::FOTO_PATH,
+        self::ID_MEMBROS,
+        self::VIDEO_ID,
+        self::FOTO_ID
     ];
 
     protected $hidden = [
@@ -49,19 +49,19 @@ class referencias extends Model
         return $this->getAttribute(self::PATH);
     }
 
-    public function getNomesMembros()
+    public function getIdMembros()
     {
-        return $this->getAttribute(self::NOMES_MEMBROS);
+        return $this->getAttribute(self::ID_MEMBROS);
     }
 
-    public function getVideoPath()
+    public function getVideoId()
     {
-        return $this->getAttribute(self::VIDEO_PATH);
+        return $this->getAttribute(self::VIDEO_ID);
     }
 
-    public function getFotoPath()
+    public function getFotoId()
     {
-        return $this->getAttribute(self::FOTO_PATH);
+        return $this->getAttribute(self::FOTO_ID);
     }
 
 

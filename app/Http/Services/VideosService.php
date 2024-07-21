@@ -34,7 +34,7 @@ class VideosService
 
     public function delete($id)
     {
-        return $this->videosRepository->delete($id);
+        return $this->videosRepository->destroy($id);
     }
     
     public function getVideosByYear($year)
@@ -42,8 +42,8 @@ class VideosService
         return $this->videosRepository->getVideosByYear($year);
     }
 
-    public function getVideosByUser($user)
+    public function getVideosByMemberId($id)
     {
-        return $this->videosRepository->getVideosByUser($user);
+        return $this->videosRepository->getVideosByMemberId($id);
     }
 }

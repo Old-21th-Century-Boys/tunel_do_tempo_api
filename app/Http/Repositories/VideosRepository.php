@@ -12,6 +12,7 @@ class VideosRepository
         $video->titulo = $data['titulo'];
         $video->path = $data['path'];
         $video->anoVideo = $data['anoVideo'];
+        $video->IdMembros = $data['IdMembros'];
         $video->save();
         return $video;
     }
@@ -21,25 +22,31 @@ class VideosRepository
         return Videos::all();
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         return Videos::find($id);
     }
 
-    public function update(array $data, $id)
+    public function update(int $id, array $data)
     {
         $video = Videos::find($id);
         $video->titulo = $data['titulo'];
         $video->path = $data['path'];
         $video->anoVideo = $data['anoVideo'];
+        $video->IdMembros = $data['IdMembros'];
         $video->save();
         return $video;
     }
 
-    public function delete($id)
+    public function destroy(int $id)
     {
         $video = Videos::find($id);
         $video->delete();
+    }
+
+    public function getVideosByMemberId(int $id)
+    {
+        return Videos::where('IdMembros', $id)->get();
     }
 
     public function getVideosByYear($year)
@@ -47,9 +54,5 @@ class VideosRepository
         return Videos::where('anoVideo', $year)->get();
     }
 
-    public function getVideosByUser($user)
-    {
-       //
-    }
 
 }

@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('membros', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->timestamp('aniversario')->nullable();
+            $table->timestamp('aniversario');
             $table->string('email')->unique();
+            $table->string('fotoId')->nullable();
             $table->timestamps(); // This automatically adds created_at and updated_at as timestamp fields
         });
     }

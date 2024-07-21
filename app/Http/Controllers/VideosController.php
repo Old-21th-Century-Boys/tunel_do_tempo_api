@@ -8,16 +8,6 @@ use Illuminate\Http\Request;
 
 class VideosController extends Controller
 {
-    public function store(Request $request)
-    {
-        try {
-            $service = new VideosService();
-            $video = $service->store($request->all());
-            return response()->json($video, 201);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'Erro ao cadastrar video!'], 400);
-        }
-    }
 
     public function index()
     {
@@ -27,6 +17,17 @@ class VideosController extends Controller
             return response()->json($videos, 200);
         } catch (Exception $e) {
             return response()->json(['message' => 'Erro ao buscar videos!'], 400);
+        }
+    }
+
+    public function store(Request $request)
+    {
+        try {
+            $service = new VideosService();
+            $video = $service->store($request->all());
+            return response()->json($video, 201);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Erro ao cadastrar video!'], 400);
         }
     }
 
@@ -74,11 +75,11 @@ class VideosController extends Controller
         }
     }   
 
-    public function getVideosByUser($user)
+    public function getVideosByMemberId($id)
     {
         try {
             $service = new VideosService();
-            $videos = $service->getVideosByUser($user);
+            $videos = $service->getVideosByMemberId($id);
             return response()->json($videos, 200);
         } catch (Exception $e) {
             return response()->json(['message' => 'Erro ao buscar videos!'], 400);

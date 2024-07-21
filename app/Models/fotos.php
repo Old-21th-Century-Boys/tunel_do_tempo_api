@@ -15,7 +15,7 @@ class fotos extends Model
     const ID = 'id';
     const TITULO = 'titulo';
     const PATH = 'path';
-    const NOMES_MEMBROS = 'nomesMembros';
+    const ID_MEMBROS = 'idMembros';
     const ANO_FOTO = 'anoFoto';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -26,7 +26,7 @@ class fotos extends Model
         self::ID,
         self::TITULO,
         self::PATH,
-        self::NOMES_MEMBROS,
+        self::ID_MEMBROS,
         self::ANO_FOTO
     ];
 
@@ -51,9 +51,9 @@ class fotos extends Model
         return $this->getAttribute(self::PATH);
     }
 
-    public function getNomesMembros()
+    public function getIdMembros()
     {
-        return $this->getAttribute(self::NOMES_MEMBROS);
+        return $this->getAttribute(self::ID_MEMBROS);
     }
 
     public function getAnoFoto()

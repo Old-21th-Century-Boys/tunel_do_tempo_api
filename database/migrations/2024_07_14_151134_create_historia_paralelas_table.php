@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('path');
-            $table->string('nomesMembros');
+            $table->string('IdMembros');
+            $table->string('fotoId');
+            $table->string('videoId');
             $table->timestamps();
         });
     }

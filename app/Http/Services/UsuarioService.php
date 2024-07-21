@@ -18,4 +18,25 @@ class UsuarioService
         return $this->usuarioRepository->store($data);
     }
     
+    public function index()
+    {
+        return $this->usuarioRepository->index();
+    }
+
+    public function show(int $id)
+    {
+        return $this->usuarioRepository->show($id);
+    }
+
+    public function update(int $id, array $data)
+    {
+        return $this->usuarioRepository->update($id, $data);
+    }
+
+    public function destroy(int $id)
+    {
+        return $this->usuarioRepository->destroy($id);
+    }
+
+    
 }

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('path');
-            $table->string('nomesMembros');
-            $table->timestamp('anoFoto')->nullable();
+            $table->string('IdMembros');
+            $table->timestamp('anoFoto');
             $table->timestamps(); // This automatically adds created_at and updated_at as timestamp fields
         });
     }

@@ -8,20 +8,6 @@ use Exception;
 
 class MembrosController extends Controller
 {
-    public function store(MembrosRequest $request)
-    {
-        try {
-
-            $service = new MembrosService();
-            $membro = $service->store($request->all());
-            return response()->json($membro, 201);
-            
-        } catch (Exception $e) {
-            
-            return response()->json(['message' => 'Erro ao cadastrar membro!'], 400);
-        }
-    }
-
     public function index()
     {
         try {
@@ -36,7 +22,22 @@ class MembrosController extends Controller
         }
     }
 
-    public function show($id)
+    public function store(MembrosRequest $request)
+    {
+        try {
+
+            $service = new MembrosService();
+            $membro = $service->store($request->all());
+            return response()->json($membro, 201);
+            
+        } catch (Exception $e) {
+            
+            return response()->json(['message' => 'Erro ao cadastrar membro!'], 400);
+        }
+    }
+
+    
+    public function show(int $id)
     {
         try {
 
@@ -50,12 +51,12 @@ class MembrosController extends Controller
         }
     }
 
-    public function update(MembrosRequest $request, $id)
+    public function update(MembrosRequest $request, int $id)
     {
         try {
 
             $service = new MembrosService();
-            $membro = $service->update($request->all(), $id);
+            $membro = $service->update($id, $request->all());
             return response()->json($membro, 200);
             
         } catch (Exception $e) {
@@ -64,12 +65,12 @@ class MembrosController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function destroy(int $id)
     {
         try {
 
             $service = new MembrosService();
-            $service->delete($id);
+            $service->destroy($id);
             return response()->json(['message' => 'Membro deletado com sucesso!'], 200);
             
         } catch (Exception $e) {
@@ -77,4 +78,5 @@ class MembrosController extends Controller
             return response()->json(['message' => 'Erro ao deletar membro!'], 400);
         }
     }
+
 }

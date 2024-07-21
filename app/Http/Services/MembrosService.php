@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Http\Repositories\MembrosRepository as RepositoriesMembrosRepository;
+use Carbon\Carbon;
 
 class MembrosService
 {
@@ -15,7 +16,17 @@ class MembrosService
     
     public function store(array $data)
     {
-        return $this->membrosRepository->store($data);
+        $fotoService = new FotosService();
+        
+        $dataFoto = [
+            'titulo' => $data['titulo'] . ' - foto',
+            'path' => $data['pathFoto'],
+            'IdMembros' => $data['IdMembros'],
+            'anoFoto' =>  Carbon::now()
+        ];
+        
+        $foto = $fotoService->store($dataFoto);
+        return $this->membrosRepository->store($data, $foto->Id);
     }
 
     public function index()
@@ -23,19 +34,20 @@ class MembrosService
         return $this->membrosRepository->index();
     }
 
-    public function show($id)
+    public function show(int $id)
     {
         return $this->membrosRepository->show($id);
     }
 
-    public function update($id, array $data)
+    public function update(int $id, array $data)
     {
         return $this->membrosRepository->update($id, $data);
     }
 
-    public function delete($id)
+    public function destroy(int $id)
     {
-        return $this->membrosRepository->delete($id);
+        return $this->membrosRepository->destroy($id);
     }
+    
     
 }

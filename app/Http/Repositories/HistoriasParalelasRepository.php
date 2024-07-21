@@ -5,14 +5,43 @@ use App\Models\historiasParalelas;
 
 class HistoriasParalelasRepository
 {
-    public function store(array $data)
+    public function store(array $data, int $fotoId, int $videoId)
     {
-        $historiaParalela = new historiasParalelas();
-        $historiaParalela->titulo = $data['titulo'];
-        $historiaParalela->path = $data['path'];
-        $historiaParalela->nomeMembros = $data['nomeMembros'];
-        $historiaParalela->save();
-        return $historiaParalela;
+        $historiasParalelas = new historiasParalelas();
+        $historiasParalelas->titulo = $data['titulo'];
+        $historiasParalelas->path = $data['path'];
+        $historiasParalelas->IdMembros = $data['IdMembros'];
+        $historiasParalelas->fotoId = $fotoId;
+        $historiasParalelas->videoId = $videoId;
+        $historiasParalelas->save();
+        return $historiasParalelas;
     }
+
+    public function index()
+    {
+        return historiasParalelas::all();
+    }
+
+    public function show(int $id)
+    {
+        return historiasParalelas::find($id);
+    }
+
+    public function update(int $id, array $data)
+    {
+        $historiasParalelas = historiasParalelas::find($id);
+        $historiasParalelas->titulo = $data['titulo'];
+        $historiasParalelas->path = $data['path'];
+        $historiasParalelas->IdMembros = $data['IdMembros'];
+        $historiasParalelas->save();
+        return $historiasParalelas;
+    }
+
+    public function destroy(int $id)
+    {
+        $historiasParalelas = historiasParalelas::find($id);
+        $historiasParalelas->delete();
+    }
+
     
 }

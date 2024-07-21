@@ -5,46 +5,47 @@ use App\Models\fotos;
 
 class FotosRepository
 {
+    public function index()
+    {
+        return fotos::all();
+    }
+
+    public function show(int $id)
+    {
+        return fotos::find($id);
+    }
+
     public function store(array $data)
     {
         $foto = new Fotos();
         $foto->titulo = $data['titulo'];
         $foto->path = $data['path'];
-        $foto->nomeMembros = $data['nomeMembros'];
+        $foto->IdMembros = $data['IdMembros'];
         $foto->anoFoto = $data['anoFoto'];
         $foto->save();
         return $foto;
     }
 
-    public function index()
+    public function update(int $id, array $data)
     {
-        return Fotos::all();
-    }
-
-    public function show($id)
-    {
-        return Fotos::find($id);
-    }
-
-    public function update(array $data, $id)
-    {
-        $foto = Fotos::find($id);
+        $foto = fotos::find($id);
         $foto->titulo = $data['titulo'];
         $foto->path = $data['path'];
-        $foto->nomeMembros = $data['nomeMembros'];
+        $foto->IdMembros = $data['IdMembros'];
         $foto->anoFoto = $data['anoFoto'];
         $foto->save();
         return $foto;
     }
 
-    public function delete($id)
+    public function destroy(int $id)
     {
-        $foto = Fotos::find($id);
+        $foto = fotos::find($id);
         $foto->delete();
     }
 
     public function getFotosByYear($year)
     {
-        return Fotos::where('anoFoto', $year)->get();
+        return fotos::where('anoFoto', $year)->get();
     }
+
 }

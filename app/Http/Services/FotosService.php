@@ -34,7 +34,7 @@ class FotosService
 
     public function delete($id)
     {
-        return $this->fotosRepository->delete($id);
+        return $this->fotosRepository->destroy($id);
     }
 
     public function getFotosByYear($year)

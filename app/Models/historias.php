@@ -15,7 +15,9 @@ class historias extends Model
     const ID = 'id';
     const TITULO = 'titulo';
     const PATH = 'path';
-    const NOMES_MEMBROS = 'nomesMembros';
+    const ID_MEMBROS = 'idMembros';
+    const FOTO_ID = 'fotoId';
+    const VIDEO_ID = 'videoId';
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     const DELETED_AT = 'deleted_at';
@@ -23,7 +25,9 @@ class historias extends Model
     protected $fillable = [
         self::TITULO,
         self::PATH,
-        self::NOMES_MEMBROS,
+        self::ID_MEMBROS,
+        self::FOTO_ID,
+        self::VIDEO_ID
     ];
 
     protected $hidden = [
@@ -42,9 +46,19 @@ class historias extends Model
         return $this->getAttribute(self::PATH);
     }
 
-    public function getNomesMembros()
+    public function getIdMembros()
     {
-        return $this->getAttribute(self::NOMES_MEMBROS);
+        return $this->getAttribute(self::ID_MEMBROS);
+    }
+
+    public function getFotoId()
+    {
+        return $this->getAttribute(self::FOTO_ID);
+    }
+
+    public function getVideoId()
+    {
+        return $this->getAttribute(self::VIDEO_ID);
     }
 
 
