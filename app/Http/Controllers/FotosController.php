@@ -77,4 +77,15 @@ class FotosController extends Controller
         }
     }
 
+    public function getFotosByMemberId($id)
+    {
+        try {
+            $fotosService = new FotosService();
+            $fotos = $fotosService->getFotosByMemberId($id);
+            return response()->json($fotos, 200);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Erro ao buscar fotos por membro!'], 400);
+        }
+    }
+
 }

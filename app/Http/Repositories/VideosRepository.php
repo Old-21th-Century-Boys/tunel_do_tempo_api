@@ -2,7 +2,7 @@
 
 namespace App\Http\Repositories;
 
-use App\Models\Videos;
+use App\Models\videos;
 
 class VideosRepository
 {
@@ -46,7 +46,7 @@ class VideosRepository
 
     public function getVideosByMemberId(int $id)
     {
-        return Videos::where('IdMembros', $id)->get();
+        return Videos::where('IdMembros', 'LIKE', "%$id%")->get();
     }
 
     public function getVideosByYear($year)

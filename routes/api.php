@@ -39,7 +39,7 @@ Route::get('/videos/{id}', [VideosController::class, 'show']);
 Route::put('/videos/{id}', [VideosController::class, 'update']);
 Route::delete('/videos/{id}', [VideosController::class, 'destroy']);
 Route::get('/videos/{year}', [VideosController::class, 'getVideosByYear']);
-Route::get('/videos/membro/{id}', [VideosController::class, 'getVideosByMemberId']);//Mudar
+Route::get('/videos/membro/{id}', [VideosController::class, 'getVideosByMemberId']);
 
 Route::get('/fotos', [FotosController::class, 'index']);
 Route::post('/fotos', [FotosController::class, 'store']);
@@ -47,7 +47,7 @@ Route::get('/fotos/{id}', [FotosController::class, 'show']);
 Route::put('/fotos/{id}', [FotosController::class, 'update']);
 Route::delete('/fotos/{id}', [FotosController::class, 'destroy']);
 Route::get('/fotos/{year}', [FotosController::class, 'getFotosByYear']);
-Route::get('/fotos/membro/{id}', [FotosController::class, 'getFotosByMemberId']);//Mudar
+Route::get('/fotos/membro/{id}', [FotosController::class, 'getFotosByMemberId']);
 
 Route::get('/historias', [HistoriasController::class, 'index']);
 Route::post('/historias', [HistoriasController::class, 'store']);

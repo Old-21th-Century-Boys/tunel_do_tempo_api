@@ -48,4 +48,9 @@ class FotosRepository
         return fotos::where('anoFoto', $year)->get();
     }
 
+    public function getFotosByMemberId($id)
+    {
+        return fotos::where('IdMembros', 'LIKE', "%$id%")->get();
+    }
+
 }

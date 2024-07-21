@@ -41,5 +41,10 @@ class FotosService
     {
         return $this->fotosRepository->getFotosByYear($year);
     }
+
+    public function getFotosByMemberId($id)
+    {
+        return $this->fotosRepository->getFotosByMemberId($id);
+    }
     
 }
