@@ -20,7 +20,7 @@ class HistoriasParalelasService
         
         $dataFoto = [
              'titulo' => $data['titulo'] . ' - foto',
-             'path' => $data['pathFoto'],
+             'path' => $data['pathFoto'] ?? "Default",
              'IdMembros' => $data['IdMembros'],
              'anoFoto' =>  Carbon::now()
         ];
@@ -28,13 +28,13 @@ class HistoriasParalelasService
 
         $dataVideo = [
             'titulo' => $data['titulo'] . ' - video',
-            'path' => $data['pathVideo'],
+            'path' => $data['pathVideo'] ?? "Default",
             'IdMembros' => $data['IdMembros'],
             'anoVideo' => Carbon::now()
         ];
         $video = $videoService->store($dataVideo);
         
-        return $this->historiasParalelasRepository->store($data, $foto->Id, $video->Id);
+        return $this->historiasParalelasRepository->store($data, $foto["id"], $video["id"]);
     }
 
     public function index()

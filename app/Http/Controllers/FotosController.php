@@ -60,17 +60,17 @@ class FotosController extends Controller
         try {
             $fotosService = new FotosService();
             $foto = $fotosService->delete($id);
-            return response()->json($foto, 200);
+            return response()->json(['message' => 'Foto apagada com Sucesso'], 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Erro ao deletar foto!'], 400);
         }
     }
  
-    public function getFotosByYear($year)
+    public function getFotosByYear(Request $request)
     {
         try {
             $fotosService = new FotosService();
-            $fotos = $fotosService->getFotosByYear($year);
+            $fotos = $fotosService->getFotosByYear($request->year);
             return response()->json($fotos, 200);
         } catch (\Exception $e) {
             return response()->json(['message' => 'Erro ao buscar fotos por ano!'], 400);

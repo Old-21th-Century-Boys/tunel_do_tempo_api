@@ -30,10 +30,10 @@ class VideosRepository
     public function update(int $id, array $data)
     {
         $video = Videos::find($id);
-        $video->titulo = $data['titulo'];
-        $video->path = $data['path'];
-        $video->anoVideo = $data['anoVideo'];
-        $video->IdMembros = $data['IdMembros'];
+        $video->titulo = $data['titulo'] ?? $video->titulo;
+        $video->path = $data['path'] ?? $video->path;
+        $video->anoVideo = $data['anoVideo'] ?? $video->anoVideo;
+        $video->IdMembros = $data['IdMembros'] ?? $video->IdMembros;
         $video->save();
         return $video;
     }
@@ -51,7 +51,8 @@ class VideosRepository
 
     public function getVideosByYear($year)
     {
-        return Videos::where('anoVideo', $year)->get();
+        return Videos::where('anoVideo', 'LIKE', "%$year%")->get();
+       
     }
 
 

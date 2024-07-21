@@ -30,9 +30,11 @@ class HistoriasParalelasRepository
     public function update(int $id, array $data)
     {
         $historiasParalelas = historiasParalelas::find($id);
-        $historiasParalelas->titulo = $data['titulo'];
-        $historiasParalelas->path = $data['path'];
-        $historiasParalelas->IdMembros = $data['IdMembros'];
+        $historiasParalelas->titulo = $data['titulo'] ?? $historiasParalelas->titulo;
+        $historiasParalelas->path = $data['path'] ?? $historiasParalelas->path;
+        $historiasParalelas->IdMembros = $data['IdMembros'] ?? $historiasParalelas->IdMembros;
+        $historiasParalelas->fotoId = $data['fotoId'] ?? $historiasParalelas->fotoId;
+        $historiasParalelas->videoId = $data['videoId'] ?? $historiasParalelas->videoId;
         $historiasParalelas->save();
         return $historiasParalelas;
     }

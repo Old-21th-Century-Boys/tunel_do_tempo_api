@@ -31,9 +31,9 @@ class MembrosRepository
     public function update(int $id, array $data)
     {
         $membro = membros::find($id);
-        $membro->nome = $data['name'];
-        $membro->email = $data['email'];
-        $membro->aniversario = $data['aniversario'];
+        $membro->nome = $data['name'] ?? $membro->nome;
+        $membro->email = $data['email'] ?? $membro->email;
+        $membro->aniversario = $data['aniversario'] ?? $membro->aniversario;
         $membro->save();
         return $membro;
     }

@@ -30,10 +30,10 @@ class UsuariosRepository
     public function update(int $id, array $data)
     {
         $usuario = usuarios::find($id);
-        $usuario->nome = $data['nome'];
-        $usuario->email = $data['email'];
-        $usuario->senha = $data['senha'];
-        $usuario->uuid = $data['uuid'];
+        $usuario->nome = $data['nome'] ?? $usuario->nome;
+        $usuario->email = $data['email'] ?? $usuario->email;
+        $usuario->senha = $data['senha'] ?? $usuario->senha;
+        $usuario->uuid = $data['uuid'] ?? $usuario->uuid;
         $usuario->save();
         return $usuario;
     }

@@ -38,7 +38,7 @@ Route::post('/videos', [VideosController::class, 'store']);
 Route::get('/videos/{id}', [VideosController::class, 'show']);
 Route::put('/videos/{id}', [VideosController::class, 'update']);
 Route::delete('/videos/{id}', [VideosController::class, 'destroy']);
-Route::get('/videos/{year}', [VideosController::class, 'getVideosByYear']);
+Route::post('/videos/year', [VideosController::class, 'getVideosByYear']);
 Route::get('/videos/membro/{id}', [VideosController::class, 'getVideosByMemberId']);
 
 Route::get('/fotos', [FotosController::class, 'index']);
@@ -46,7 +46,7 @@ Route::post('/fotos', [FotosController::class, 'store']);
 Route::get('/fotos/{id}', [FotosController::class, 'show']);
 Route::put('/fotos/{id}', [FotosController::class, 'update']);
 Route::delete('/fotos/{id}', [FotosController::class, 'destroy']);
-Route::get('/fotos/{year}', [FotosController::class, 'getFotosByYear']);
+Route::post('/fotos/year', [FotosController::class, 'getFotosByYear']);
 Route::get('/fotos/membro/{id}', [FotosController::class, 'getFotosByMemberId']);
 
 Route::get('/historias', [HistoriasController::class, 'index']);
@@ -55,13 +55,13 @@ Route::get('/historias/{id}', [HistoriasController::class, 'show']);
 Route::put('/historias/{id}', [HistoriasController::class, 'update']);
 Route::delete('/historias/{id}', [HistoriasController::class, 'destroy']);
 
-Route::get('/historiasParalelas', [HistoriasParalelasController::class, 'historiasParalelas']);
+Route::get('/historiasParalelas', [HistoriasParalelasController::class, 'index']);
 Route::post('/historiasParalelas', [HistoriasParalelasController::class, 'store']);
 Route::get('/historiasParalelas/{id}', [HistoriasParalelasController::class, 'show']);
 Route::put('/historiasParalelas/{id}', [HistoriasParalelasController::class, 'update']);
 Route::delete('/historiasParalelas/{id}', [HistoriasParalelasController::class, 'destroy']);
 
-Route::get('/referencias', [ReferenciasController::class, 'referencias']);
+Route::get('/referencias', [ReferenciasController::class, 'index']);
 Route::post('/referencias', [ReferenciasController::class, 'store']);
 Route::get('/referencias/{id}', [ReferenciasController::class, 'show']);
 Route::put('/referencias/{id}', [ReferenciasController::class, 'update']);

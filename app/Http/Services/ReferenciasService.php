@@ -20,7 +20,7 @@ class ReferenciasService
 
         $dataFoto = [
             'titulo' => $data['titulo'] . ' - foto',
-            'path' => $data['pathFoto'],
+            'path' => $data['pathFoto'] ?? "Default",
             'IdMembros' => $data['IdMembros'],
             'anoFoto' =>  Carbon::now()
         ];
@@ -29,14 +29,14 @@ class ReferenciasService
 
         $dataVideo = [
             'titulo' => $data['titulo'] . ' - video',
-            'path' => $data['pathVideo'],
+            'path' => $data['pathVideo'] ?? "Default",
             'IdMembros' => $data['IdMembros'],
             'anoVideo' => Carbon::now()
         ];
 
         $video = $videoService->store($dataVideo);
         
-        return $this->referenciasRepository->store($data, $foto->Id, $video->Id);
+        return $this->referenciasRepository->store($data, $foto["id"], $video["id"]);
     }
 
     public function index()

@@ -27,7 +27,7 @@ class VideosService
         return $this->videosRepository->show($id);
     }
 
-    public function update($id, array $data)
+    public function update($data, $id)
     {
         return $this->videosRepository->update($id, $data);
     }

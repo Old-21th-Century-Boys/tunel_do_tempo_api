@@ -18,11 +18,11 @@ class HistoriasRepository
     public function update(int $id, array $data)
     {
         $historia = historias::find($id);
-        $historia->titulo = $data['titulo'];
-        $historia->path = $data['path'];
-        $historia->IdMembros = $data['IdMembros'];
-        $historia->fotoId = $data['fotoId'];
-        $historia->videoId = $data['videoId'];
+        $historia->titulo = $data['titulo'] ?? $historia->titulo;
+        $historia->path = $data['path'] ?? $historia->path;
+        $historia->IdMembros = $data['IdMembros'] ?? $historia->IdMembros;
+        $historia->fotoId = $data['fotoId'] ?? $historia->fotoId;
+        $historia->videoId = $data['videoId'] ?? $historia->videoId;
         $historia->save();
         return $historia;
     }

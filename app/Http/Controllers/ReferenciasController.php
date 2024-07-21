@@ -51,7 +51,7 @@ class ReferenciasController extends Controller
             $referencia = $referenciaService->update($id, $data);
             return response()->json($referencia, 200);
         } catch (\Exception $e) {
-            return response()->json(['message' => 'Erro ao atualizar referencia!'], 400);
+            return $e->getMessage();
         }
     }
 

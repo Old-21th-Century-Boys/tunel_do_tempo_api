@@ -29,10 +29,10 @@ class FotosRepository
     public function update(int $id, array $data)
     {
         $foto = fotos::find($id);
-        $foto->titulo = $data['titulo'];
-        $foto->path = $data['path'];
-        $foto->IdMembros = $data['IdMembros'];
-        $foto->anoFoto = $data['anoFoto'];
+        $foto->titulo = $data['titulo'] ?? $foto->titulo;
+        $foto->path = $data['path'] ?? $foto->path;
+        $foto->IdMembros = $data['IdMembros'] ?? $foto->IdMembros;
+        $foto->anoFoto = $data['anoFoto'] ?? $foto->anoFoto;
         $foto->save();
         return $foto;
     }
@@ -45,7 +45,7 @@ class FotosRepository
 
     public function getFotosByYear($year)
     {
-        return fotos::where('anoFoto', $year)->get();
+        return fotos::where('anoFoto', 'LIKE', "%$year%")->get();
     }
 
     public function getFotosByMemberId($id)

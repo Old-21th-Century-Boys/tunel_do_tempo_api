@@ -64,11 +64,11 @@ class VideosController extends Controller
         }
     }
 
-    public function getVideosByYear($year)
+    public function getVideosByYear(Request $request)
     {
         try {
             $service = new VideosService();
-            $videos = $service->getVideosByYear($year);
+            $videos = $service->getVideosByYear($request->year);
             return response()->json($videos, 200);
         } catch (Exception $e) {
             return response()->json(['message' => 'Erro ao buscar videos!'], 400);

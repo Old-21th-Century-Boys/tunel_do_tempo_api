@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 
 class HistoriasParalelasController extends Controller
 {
-    
-
     public function index()
     {
         try {
@@ -29,7 +27,7 @@ class HistoriasParalelasController extends Controller
             return response()->json($historia);
         }
         catch(\Exception $e){
-            return response()->json(['error' => $e->getMessage()], 500);
+            return $e->getMessage();
         }
     }
     
