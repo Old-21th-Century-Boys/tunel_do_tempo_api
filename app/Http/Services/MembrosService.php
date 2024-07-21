@@ -19,14 +19,14 @@ class MembrosService
         $fotoService = new FotosService();
         
         $dataFoto = [
-            'titulo' => $data['titulo'] . ' - foto',
-            'path' => $data['pathFoto'],
-            'IdMembros' => $data['IdMembros'],
+            'titulo' => $data['name'] . ' - foto',
+            'path' => $data['pathFoto'] ?? 'default',
+            'IdMembros' => $this->membrosRepository->count() + 1,
             'anoFoto' =>  Carbon::now()
         ];
         
         $foto = $fotoService->store($dataFoto);
-        return $this->membrosRepository->store($data, $foto->Id);
+        return $this->membrosRepository->store($data, $foto['id']);
     }
 
     public function index()

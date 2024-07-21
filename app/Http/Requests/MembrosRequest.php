@@ -17,7 +17,7 @@ class MembrosRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:membros,email',
             'aniversario' => 'required|date'
         ];
     }

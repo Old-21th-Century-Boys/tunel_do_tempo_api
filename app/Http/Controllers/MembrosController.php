@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MembrosRequest;
 use App\Http\Services\MembrosService;
 use Exception;
+use Illuminate\Http\Request;
 
 class MembrosController extends Controller
 {
@@ -18,7 +19,7 @@ class MembrosController extends Controller
             
         } catch (Exception $e) {
             
-            return response()->json(['message' => 'Erro ao buscar membros!'], 400);
+            return $e->getMessage();
         }
     }
 
@@ -32,7 +33,7 @@ class MembrosController extends Controller
             
         } catch (Exception $e) {
             
-            return response()->json(['message' => 'Erro ao cadastrar membro!'], 400);
+            return $e->getMessage();
         }
     }
 

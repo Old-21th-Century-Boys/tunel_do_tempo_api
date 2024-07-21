@@ -13,6 +13,9 @@ class MembrosRepository
         $membro->aniversario = $data['aniversario'];
         $membro->fotoId = $fotoId;
         $membro->fotoId = $fotoId;
+        $membro->save();
+
+        return $membro;
     }
 
     public function index()
@@ -41,4 +44,9 @@ class MembrosRepository
         $membro->delete();
     }
 
+    public function count()
+    {
+        $membros = new membros();
+        return $membros->count();
+    }
 }
