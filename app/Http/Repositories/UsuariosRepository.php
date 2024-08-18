@@ -43,5 +43,11 @@ class UsuariosRepository
         $usuario = usuarios::find($id);
         $usuario->delete();
     }
-    
+
+    public function findByEmailAndPassword(string $email, string $senha)
+    {
+        return usuarios::where('email', $email)
+                        ->where('senha', $senha)
+                        ->first();
+    }
 }

@@ -66,6 +66,21 @@ class UsuariosController extends Controller
             return response()->json(['message' => 'Erro ao deletar usuario!'], 400);
         }
     }
-
     
+    public function login(Request $request)
+    {
+        try {
+            $credentials = $request->only(['email', 'senha']);
+            $usuarioService = new UsuarioService();
+            $result = $usuarioService->login($credentials);
+
+            if ($result['success']) {
+                return response()->json($result, 200);
+            } else {
+                return response()->json($result, 401); // 401 Unauthorized
+            }
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Erro ao tentar realizar login!'], 400);
+        }
+    }
 }

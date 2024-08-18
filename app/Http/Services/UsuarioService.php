@@ -38,5 +38,21 @@ class UsuarioService
         return $this->usuarioRepository->destroy($id);
     }
 
-    
+    public function login(array $credentials)
+    {
+        $user = $this->usuarioRepository->findByEmailAndPassword($credentials['email'], $credentials['senha']);
+
+        if ($user) {
+            return [
+                'success' => true,
+                'message' => 'Login realizado com sucesso!',
+                'user' => $user,
+            ];
+        }
+
+        return [
+            'success' => false,
+            'message' => 'Email ou senha incorretos.',
+        ];
+    }
 }
