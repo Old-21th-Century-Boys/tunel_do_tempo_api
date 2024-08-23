@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class FotosController extends Controller
 {
-    
+
 
     public function index()
     {
@@ -22,16 +22,34 @@ class FotosController extends Controller
 
     public function store(Request $request)
     {
-        try{
-            $data = $request->all();
-            $fotosService = new FotosService();
-            $foto = $fotosService->store($data);
-            return response()->json($foto);
+        try {
+            $request->validate([
+                'photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            if ($request->hasFile('photo')) {
+                $file = $request->file('photo');
+
+                $timestamp = now()->format('YmdHis');
+                $filename = $timestamp . '_' . $file->getClientOriginalName();
+                $path = $file->storeAs('photos', $filename, 'public');
+
+                $data = $request->all();
+                $data['path'] = '/storage/' . $path;
+
+                $fotosService = new FotosService();
+                $foto = $fotosService->store($data);
+
+                return response()->json($foto);
+            } else {
+                return response()->json(['message' => 'Nenhuma foto foi enviada!'], 400);
+            }
         } catch (\Exception $e) {
             return response()->json(['message' => 'Erro ao cadastrar foto!'], 400);
-        
         }
     }
+
+
     public function show(int $id)
     {
         try {
@@ -65,7 +83,7 @@ class FotosController extends Controller
             return response()->json(['message' => 'Erro ao deletar foto!'], 400);
         }
     }
- 
+
     public function getFotosByYear(Request $request)
     {
         try {
@@ -87,5 +105,4 @@ class FotosController extends Controller
             return response()->json(['message' => 'Erro ao buscar fotos por membro!'], 400);
         }
     }
-
 }
